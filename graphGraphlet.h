@@ -107,6 +107,8 @@ private:
 
 	EDGE current;//!< A private member variable
 
+	long int numberOfComparisonOperationG8;
+
 public:
 	/*! \fn ~graph_()
  		*  \brief A destructor function of graph class.
@@ -141,6 +143,17 @@ public:
     	vertexToIndexValid=true;
     	
     	initiateEdgeSet();
+    }
+
+    void update_numberOfComparisonOperationG8(long int opts)
+    {
+        numberOfComparisonOperationG8 += opts;
+    }
+
+    void print_numberOfComparisonOperationG8()
+    {
+        cout << "Number of comparison operations used for counting 4 clique: ";
+        cout << numberOfComparisonOperationG8 <<"\n";
     }
 
 	/*! \fn void prepare_variable()
@@ -320,7 +333,9 @@ public:
     {
     	map<int,int>::const_iterator f,s;
     	f=vertexToIndex.find(e.first);
+		numberOfComparisonOperationG8 += ceil(log2(vertexToIndex.size()));
        	s=vertexToIndex.find(e.second);
+		numberOfComparisonOperationG8 += ceil(log2(vertexToIndex.size()));
        	if(f == vertexToIndex.end() or s == vertexToIndex.end())
       	{
        		cout<<"the vertex does not exist\n";

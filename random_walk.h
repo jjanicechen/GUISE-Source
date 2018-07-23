@@ -113,8 +113,10 @@ public:
 				}
 				cout << log10((graphletcount[k]+1)/totalgraphlet);
 				cout <<")\nRandom Walk ends\n";
+                g->print_numberOfComparisonOperationG8();
 				return;
-			}		
+			}
+            g->update_numberOfComparisonOperationG8(1);
 
 			string gc = next->canonical_code();
 			out3 << gc <<"\t"<<next->graphletid<<endl;	
@@ -123,12 +125,19 @@ public:
 			//cout <<"iter:"<<iter <<endl;
 			
 			cit = visit_count.find(gc);
+            if(visit_count.size() > 0)
+            {
+                g->update_numberOfComparisonOperationG8(int(ceil(log2(visit_count.size()))));
+            }
+
 			if(cit != visit_count.end())
 			{
+                g->update_numberOfComparisonOperationG8(1);
 				cit->second++;
 			}
 			else
 			{
+                g->update_numberOfComparisonOperationG8(1);
 				visit_count.insert(make_pair(gc,1));
 			}
 		
