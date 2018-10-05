@@ -107,7 +107,12 @@ private:
 
 	EDGE current;//!< A private member variable
 
-	long int numberOfComparisonOperationG8;
+	long int numberOfComparisonOperation_g8;
+    long int numberOfComparisonOperation_g7;
+    long int numberOfComparisonOperation_g6;
+    long int numberOfComparisonOperation_g5;
+    long int numberOfComparisonOperation_g4;
+    long int numberOfComparisonOperation_g3;
 
 public:
 	/*! \fn ~graph_()
@@ -123,6 +128,12 @@ public:
 		edgeToIndex.clear();
 		edgeSet.clear();
 		edgeCW.clear();
+        numberOfComparisonOperation_g8 = 0;
+        numberOfComparisonOperation_g7 = 0;
+        numberOfComparisonOperation_g6 = 0;
+        numberOfComparisonOperation_g5 = 0;
+        numberOfComparisonOperation_g4 = 0;
+        numberOfComparisonOperation_g3 = 0;
 	}
 
 	/*! \fn graph_(const char* filename)
@@ -145,15 +156,70 @@ public:
     	initiateEdgeSet();
     }
 
-    void update_numberOfComparisonOperationG8(long int opts)
+    void update_numberOfComparisonOperation_g8(long int opts)
     {
-        numberOfComparisonOperationG8 += opts;
+        numberOfComparisonOperation_g8 += opts;
     }
 
-    void print_numberOfComparisonOperationG8()
+    void update_numberOfComparisonOperation_g7(long int opts)
+    {
+        numberOfComparisonOperation_g7 += opts;
+    }
+
+    void update_numberOfComparisonOperation_g6(long int opts)
+    {
+        numberOfComparisonOperation_g6 += opts;
+    }
+
+    void update_numberOfComparisonOperation_g5(long int opts)
+    {
+        numberOfComparisonOperation_g5 += opts;
+    }
+
+    void update_numberOfComparisonOperation_g4(long int opts)
+    {
+        numberOfComparisonOperation_g4 += opts;
+    }
+
+    void update_numberOfComparisonOperation_g3(long int opts)
+    {
+        numberOfComparisonOperation_g3 += opts;
+    }
+
+    void print_numberOfComparisonOperation_g8()
     {
         cout << "Number of comparison operations used for counting 4 clique: ";
-        cout << numberOfComparisonOperationG8 <<"\n";
+        cout << numberOfComparisonOperation_g8 <<"\n";
+    }
+
+    void print_numberOfComparisonOperation_g7()
+    {
+        cout << "Number of comparison operations used for counting 4 chordal-cycle: ";
+        cout << numberOfComparisonOperation_g7 <<"\n";
+    }
+
+    void print_numberOfComparisonOperation_g6()
+    {
+        cout << "Number of comparison operations used for counting 4 tailed-tri: ";
+        cout << numberOfComparisonOperation_g6 <<"\n";
+    }
+
+    void print_numberOfComparisonOperation_g5()
+    {
+        cout << "Number of comparison operations used for counting 4 cycle: ";
+        cout << numberOfComparisonOperation_g5 <<"\n";
+    }
+
+    void print_numberOfComparisonOperation_g4()
+    {
+        cout << "Number of comparison operations used for counting 3 star: ";
+        cout << numberOfComparisonOperation_g4 <<"\n";
+    }
+
+    void print_numberOfComparisonOperation_g3()
+    {
+        cout << "Number of comparison operations used for counting 4 path: ";
+        cout << numberOfComparisonOperation_g3 <<"\n";
     }
 
 	/*! \fn void prepare_variable()
@@ -333,9 +399,19 @@ public:
     {
     	map<int,int>::const_iterator f,s;
     	f=vertexToIndex.find(e.first);
-		numberOfComparisonOperationG8 += ceil(log2(vertexToIndex.size()));
+		numberOfComparisonOperation_g8 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g7 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g6 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g5 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g4 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g3 += ceil(log2(vertexToIndex.size()));
        	s=vertexToIndex.find(e.second);
-		numberOfComparisonOperationG8 += ceil(log2(vertexToIndex.size()));
+		numberOfComparisonOperation_g8 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g7 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g6 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g5 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g4 += ceil(log2(vertexToIndex.size()));
+        numberOfComparisonOperation_g3 += ceil(log2(vertexToIndex.size()));
        	if(f == vertexToIndex.end() or s == vertexToIndex.end())
       	{
        		cout<<"the vertex does not exist\n";

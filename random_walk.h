@@ -113,10 +113,20 @@ public:
 				}
 				cout << log10((graphletcount[k]+1)/totalgraphlet);
 				cout <<")\nRandom Walk ends\n";
-                g->print_numberOfComparisonOperationG8();
+                g->print_numberOfComparisonOperation_g8();
+				g->print_numberOfComparisonOperation_g7();
+				g->print_numberOfComparisonOperation_g6();
+				g->print_numberOfComparisonOperation_g5();
+				g->print_numberOfComparisonOperation_g4();
+				g->print_numberOfComparisonOperation_g3();
 				return;
 			}
-            g->update_numberOfComparisonOperationG8(1);
+            g->update_numberOfComparisonOperation_g8(1);
+			g->update_numberOfComparisonOperation_g7(1);
+			g->update_numberOfComparisonOperation_g6(1);
+			g->update_numberOfComparisonOperation_g5(1);
+			g->update_numberOfComparisonOperation_g4(1);
+			g->update_numberOfComparisonOperation_g3(1);
 
 			string gc = next->canonical_code();
 			out3 << gc <<"\t"<<next->graphletid<<endl;	
@@ -127,17 +137,32 @@ public:
 			cit = visit_count.find(gc);
             if(visit_count.size() > 0)
             {
-                g->update_numberOfComparisonOperationG8(int(ceil(log2(visit_count.size()))));
+                g->update_numberOfComparisonOperation_g8(int(ceil(log2(visit_count.size()))));
+				g->update_numberOfComparisonOperation_g7(int(ceil(log2(visit_count.size()))));
+				g->update_numberOfComparisonOperation_g6(int(ceil(log2(visit_count.size()))));
+				g->update_numberOfComparisonOperation_g5(int(ceil(log2(visit_count.size()))));
+				g->update_numberOfComparisonOperation_g4(int(ceil(log2(visit_count.size()))));
+				g->update_numberOfComparisonOperation_g3(int(ceil(log2(visit_count.size()))));
             }
 
 			if(cit != visit_count.end())
 			{
-                g->update_numberOfComparisonOperationG8(1);
+                g->update_numberOfComparisonOperation_g8(1);
+				g->update_numberOfComparisonOperation_g7(1);
+				g->update_numberOfComparisonOperation_g6(1);
+				g->update_numberOfComparisonOperation_g5(1);
+				g->update_numberOfComparisonOperation_g4(1);
+				g->update_numberOfComparisonOperation_g3(1);
 				cit->second++;
 			}
 			else
 			{
-                g->update_numberOfComparisonOperationG8(1);
+                g->update_numberOfComparisonOperation_g8(1);
+				g->update_numberOfComparisonOperation_g7(1);
+				g->update_numberOfComparisonOperation_g6(1);
+				g->update_numberOfComparisonOperation_g5(1);
+				g->update_numberOfComparisonOperation_g4(1);
+				g->update_numberOfComparisonOperation_g3(1);
 				visit_count.insert(make_pair(gc,1));
 			}
 		
@@ -306,6 +331,7 @@ public:
 							g1->set_edge_status(v[1],v[3]);
 						if(current->get_edge_status(v[2],v[3]))
 							g1->set_edge_status(v[2],v[3]);
+						g->update_numberOfComparisonOperation_g7(6);
 						g->get_graphletid(g1);
 						
 						process_graphlet(g1,next_neighbors_list);
@@ -324,6 +350,7 @@ public:
 							g1->set_edge_status(v[0],v[2]);
 						if(current->get_edge_status(v[1],v[2]))
 							g1->set_edge_status(v[1],v[2]);
+						g->update_numberOfComparisonOperation_g8(3);
 						g->get_graphletid(g1);
 						
 						process_graphlet(g1,next_neighbors_list);
@@ -344,6 +371,7 @@ public:
 							g1->set_edge_status(v[0],v[2]);
 						if(current->get_edge_status(v[1],v[2]))
 							g1->set_edge_status(v[1],v[2]);
+						g->update_numberOfComparisonOperation_g3(3);
 						g->get_graphletid(g1);
 						
 						process_graphlet(g1,next_neighbors_list);
@@ -365,6 +393,7 @@ public:
 							g1->set_edge_status(v[0],v[2]);
 						if(current->get_edge_status(v[1],v[2]))
 							g1->set_edge_status(v[1],v[2]);
+						g->update_numberOfComparisonOperation_g4(3);
 						g->get_graphletid(g1);
 						
 						process_graphlet(g1,next_neighbors_list);
@@ -385,6 +414,7 @@ public:
 							g1->set_edge_status(v[0],v[2]);
 						if(current->get_edge_status(v[1],v[2]))
 							g1->set_edge_status(v[1],v[2]);
+						g->update_numberOfComparisonOperation_g5(3);
 						g->get_graphletid(g1);
 						
 						process_graphlet(g1,next_neighbors_list);
@@ -405,6 +435,7 @@ public:
 							g1->set_edge_status(v[0],v[2]);
 						if(current->get_edge_status(v[1],v[2]))
 							g1->set_edge_status(v[1],v[2]);
+						g->update_numberOfComparisonOperation_g6(3);
 						g->get_graphletid(g1);
 						
 						process_graphlet(g1,next_neighbors_list);
